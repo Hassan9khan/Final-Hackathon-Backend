@@ -1,12 +1,10 @@
 import Loan from "../models/loan.model.js";
 
-// Create a new loan
 const createLoan = async (req, res) => {
   try {
     const { userId, category, subcategory, amount, period, guarantors } =
       req.body;
 
-    // Validate required fields
     if (
       !userId ||
       !category ||
@@ -18,7 +16,6 @@ const createLoan = async (req, res) => {
       return res.status(400).json({ error: "All fields are required" });
     }
 
-    // Create a new loan
     const loan = new Loan({
       userId,
       category,
@@ -36,17 +33,15 @@ const createLoan = async (req, res) => {
   }
 };
 
-// Get all loans (Admin functionality)
 const getAllLoans = async (req, res) => {
   try {
-    const loans = await Loan.find().populate("userId", "name email"); // Populate user info
+    const loans = await Loan.find().populate("userId", "name email");
     res.status(200).json(loans);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
 };
 
-// Get loans by user ID
 const getLoansByUserId = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -63,13 +58,11 @@ const getLoansByUserId = async (req, res) => {
   }
 };
 
-// Update loan status
 const updateLoanStatus = async (req, res) => {
   try {
     const { loanId } = req.params;
     const { status } = req.body;
 
-    // Validate status
     if (!["pending", "approved", "rejected"].includes(status)) {
       return res.status(400).json({ error: "Invalid status value" });
     }
@@ -90,7 +83,6 @@ const updateLoanStatus = async (req, res) => {
   }
 };
 
-// Delete a loan
 const deleteLoan = async (req, res) => {
   try {
     const { loanId } = req.params;

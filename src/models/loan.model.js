@@ -4,7 +4,7 @@ const loanSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Reference to the 'users' collection
+      ref: "User", 
       required: true,
     },
     category: {

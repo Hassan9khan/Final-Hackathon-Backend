@@ -39,7 +39,6 @@ const registerUser = async (req, res) => {
   }
 };
 
-// Login User
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -76,7 +75,6 @@ const loginUser = async (req, res) => {
   }
 };
 
-// Get All Users
 
 const getAllUser = async (req, res) => {
   try {
@@ -107,7 +105,6 @@ const getUserById = async (req, res) => {
   }
 };
 
-//Logout user
 const logoutUser = async (req, res) => {
   res.clearCookie("refreshToken");
   res.json({ message: "Logged out successfully" });
@@ -142,7 +139,6 @@ const refreshToken = async (req, res) => {
   }
 };
 
-// JWT Token Generators
 const generateAccessToken = (user) => {
   return jwt.sign({ email: user.email }, process.env.ACCESS_JWT_SECRET, {
     expiresIn: "6h",
