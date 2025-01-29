@@ -6,7 +6,6 @@ import cookieParser from "cookie-parser";
 import connectDB from "./src/db/database.js";
 import userRoutes from "./src/routes/user.route.js"
 import loanRoutes from "./src/routes/loan.route.js"
-import categoryRoutes from "./src/routes/categories.route.js"
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,7 +21,6 @@ app.get("/", (req, res) => {
 // routes
 app.use("/api/v1", userRoutes);
 app.use("/api/v1", loanRoutes);
-app.use("/api/v1", categoryRoutes);
 
 
 
