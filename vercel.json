@@ -1,16 +1,14 @@
 {
-    "version": 2,
-    "name":"Final_Hackathon",
-    "builds": [
-      {
-        "src": "index.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/"      
-      }
-    ]
-  }
+  "version": 2,
+  "name": "Final_Hackathon",
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://final-hackathon-frontend-11-3dkd-cihu2wb8z.vercel.app/api/v1/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
